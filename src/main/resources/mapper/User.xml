@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxd.mywebsite.dao.UserDao">
+
+    <!--插入新用户-->
+    <insert id="saveUser" parameterType="com.gxd.mywebsite.entity.user.User">
+      insert into user (user_id,user_name,password,user_token,nick_name)
+      values (#{userId},#{userName},#{password},#{userToken},#{nickName})
+    </insert>
+    <select id="findUserByName" parameterType="string"
+        resultType="com.gxd.mywebsite.entity.user.User">
+        select * from user where user_name=#{name}
+    </select>
+    <update id="updateToken" parameterType="map">
+        update user set user_token=#{userToken} where user_id=#{userId}
+    </update>
+
+</mapper>
